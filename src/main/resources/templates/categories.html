@@ -1,0 +1,44 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-12" th:if="${categories.size() > 0}">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Category name</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category: ${categories}" class="manufacturer">
+                        <td th:text="${category.getName()}"></td>
+                        <td th:text="${category.getDescription()}"></td>
+                        <td class="text-right">
+                            <form th:action="@{'/categories/delete/{id}' (id=${category.getId()})}"
+                                  th:method="delete">
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger delete-product">
+                                    <i class="fa fa-trash">Delete</i>
+                                </button>
+                            </form>
+
+                            <a th:href="@{'/categories/edit-form/{id}' (id=${category.getId()})}"
+                               class="btn btn-sm btn-info edit-product">
+                                <i class="fa fa-trash">Edit</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/categories/add-form" class="btn btn-block btn-dark add-product-btn">Add new category</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/home" class="btn btn-primary">Home</a>
+</div>

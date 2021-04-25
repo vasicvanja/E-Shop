@@ -1,0 +1,21 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <form method="post" action="/login" class="form-signin mt-xl-5">
+        <h2 class="form-signin-heading">Log in</h2>
+        <p>
+            <label for="username">Username: </label>
+            <input id="username" type="text" name="username" class="form-control" required="">
+        </p>
+        <p>
+            <label for="password">Password: </label>
+            <input id="password" type="password" name="password" class="form-control" required="">
+        </p>
+
+        <div th:if="${hasError}">
+            <h3 th:text="${error}" style="color: red"></h3>
+        </div>
+
+        <button type="submit" id="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
+    </form>
+
+    <a href="/register" class="btn btn-block btn-light">Don't have an account? Register here!</a>
+</div>
